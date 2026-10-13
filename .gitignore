@@ -1,0 +1,43 @@
+# Rust artifacts
+target/
+**/target/
+**/*.rs.bk
+
+# Generated experiments and personal data
+results/
+personal/
+
+# Python environments, packages, and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+coverage.xml
+build/
+dist/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Local agent, cloud, and editor configuration
+.agents/
+.codex/
+.aws/
+.vscode/
+.idea/
+
+# Operating system files and temporary edits
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.swp
+*~

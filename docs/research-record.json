@@ -1,0 +1,120 @@
+{
+  "experiment": "Corrected model 1.0.0, research preset",
+  "source_state": "Pre-release source, identified by content hash",
+  "source_sha256": "9d05235fa89c16e67fecf5921c840c2acd7db6b49d21e7189e2a52de50a5b428",
+  "environment": {
+    "cpu": "Intel Core Ultra 9 275HX",
+    "logical_cpus": 24,
+    "platform": "Linux x86_64",
+    "rust": "1.98.0",
+    "python": "3.14.7"
+  },
+  "measurements": {
+    "demo": {
+      "command": "uv run dond demo",
+      "elapsed_seconds": 4.073658843990415,
+      "maximum_child_process_rss_kib": 168972,
+      "returncode": 0,
+      "measurement": "Linux getrusage(RUSAGE_CHILDREN); maximum process RSS, not simultaneous process-tree total",
+      "artifact_bytes": 2513532,
+      "sweep_seconds": 0.05702912,
+      "single_seconds": 0.002008498
+    },
+    "research": {
+      "command": "uv run dond research",
+      "elapsed_seconds": 10.366375542012975,
+      "maximum_child_process_rss_kib": 189996,
+      "returncode": 0,
+      "measurement": "Linux getrusage(RUSAGE_CHILDREN); maximum process RSS, not simultaneous process-tree total",
+      "artifact_bytes": 7965077,
+      "sweep_seconds": 3.889035434,
+      "single_seconds": 0.166411351
+    }
+  },
+  "result_sha256": {
+    "sweep": "902d30b73197ee1ed92da8656ded8334c6db1b4e672e9cac672ca34cc0e4ecb9",
+    "single": "8d8204cf123cf67d9a63a15c8d9ef325a817157ad5b2f8c56fdbe23e973d74f1"
+  },
+  "featured_summaries": [
+    {
+      "gamma": -0.015,
+      "agent": "crra",
+      "sample_size": 100000,
+      "mean_cents": 13403494.42669,
+      "median_cents": 1293424.5,
+      "std_dev_cents": 22025674.53357252,
+      "cash_out_rounds": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        52248
+      ],
+      "kept_case": 47752
+    },
+    {
+      "gamma": 0.4425,
+      "agent": "crra",
+      "sample_size": 100000,
+      "mean_cents": 7527425.21018,
+      "median_cents": 5624702.5,
+      "std_dev_cents": 7019704.623881193,
+      "cash_out_rounds": [
+        0,
+        16,
+        5004,
+        37548,
+        35282,
+        16502,
+        5068,
+        426,
+        121
+      ],
+      "kept_case": 33
+    },
+    {
+      "gamma": 0.9,
+      "agent": "crra",
+      "sample_size": 100000,
+      "mean_cents": 1315291.41026,
+      "median_cents": 1348453.0,
+      "std_dev_cents": 280033.97840923286,
+      "cash_out_rounds": [
+        99999,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "kept_case": 0
+    },
+    {
+      "gamma": null,
+      "agent": "Synthetic square-root example (piecewise linear)",
+      "sample_size": 100000,
+      "mean_cents": 6294056.36141,
+      "median_cents": 4622928.0,
+      "std_dev_cents": 5851582.1321402835,
+      "cash_out_rounds": [
+        0,
+        806,
+        25078,
+        45941,
+        19369,
+        6128,
+        2199,
+        280,
+        141
+      ],
+      "kept_case": 58
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ubuntu:
+    name: Ubuntu checks and demo
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Install pinned Rust
+        run: rustup toolchain install 1.98.0 --profile minimal --component rustfmt --component clippy
+      - uses: actions/setup-python@v7
+        with:
+          python-version-file: .python-version
+      - uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+      - name: Install locked Python dependencies
+        run: uv sync --locked
+      - name: Check Rust formatting
+        run: cargo fmt --all -- --check
+      - name: Lint Rust
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: Test Rust
+        run: cargo test --workspace --locked
+      - name: Lint Python
+        run: uv run ruff check .
+      - name: Check Python formatting
+        run: uv run ruff format --check .
+      - name: Test Python
+        run: uv run pytest
+      - name: Run complete demo
+        run: uv run dond demo --output results/ci-demo
+      - name: Upload demo summaries, manifests, and figures
+        uses: actions/upload-artifact@v7
+        with:
+          name: ubuntu-demo
+          path: results/ci-demo/
+          if-no-files-found: error
+          retention-days: 7
+
+  windows:
+    name: Windows smoke checks
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Install pinned Rust
+        run: rustup toolchain install 1.98.0 --profile minimal
+      - uses: actions/setup-python@v7
+        with:
+          python-version-file: .python-version
+      - uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+      - name: Install locked Python dependencies
+        run: uv sync --locked
+      - name: Test Rust
+        run: cargo test --workspace --locked
+      - name: Test Python
+        run: uv run pytest
+      - name: Run small sweep
+        run: cargo run --release --locked --bin dond-sim -- sweep --config examples/demo.json --trials 32 --output results/windows-smoke/sweep.json

@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using this metadata and record the source revision and experiment configuration."
+type: software
+title: "Deal or No Deal: risk, utility, and simulated decisions"
+authors:
+  - name: Zeiteigen
+abstract: "A Rust simulation engine and Python analysis toolkit for comparing utility-based Deal or No Deal agents on shared game trajectories."
+license: MIT
+repository-code: "https://github.com/zeiteigen/deal-no-deal"
+keywords:
+  - Deal or No Deal
+  - simulation
+  - utility theory
+  - risk aversion
+  - reproducible research
